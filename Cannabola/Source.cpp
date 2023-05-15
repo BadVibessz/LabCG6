@@ -9,7 +9,6 @@
 
 #define PI 3.141592653
 
-
 std::vector<float> vert = std::vector<float>();
 Shader shader;
 
@@ -27,14 +26,15 @@ int main()
 	float min = 0;
 	float max = 2 * PI;
 	float step = PI / 1000;
-	int count = (int)round(max / step);
+	int count = (int)round((max - min) / step);
 
+	float x = min;
 	for (int i = 0; i < count; i++)
 	{
-		float x = min;
 		vert.push_back(x);
 		vert.push_back(0);
-		min += step;
+
+		x += step;
 	}
 
 	auto sourceCode = FileManager::ReadFile("Shaders/CannabolVertexShader.txt");

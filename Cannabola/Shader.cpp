@@ -20,7 +20,7 @@ Shader::Shader(uint shaderType, char const* shaderSource)
 	// компилируем шейдер
 	Compile();
 
-	// компонуем шейдер
+	// компонуем программу
 	Link();
 
 	// запускаем шейдерную программу

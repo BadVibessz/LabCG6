@@ -6,7 +6,7 @@ struct Shape
 {
 	vec4 color;
 	int countOfVertices;
-	vec2 vertices[20]; // todo: arraysize
+	vec2 vertices[20];
 };
 
 bool HasIntersection(vec2 p1, vec2 p2, vec2 q1, vec2 q2)
@@ -73,7 +73,6 @@ Shape CreateRectangle(vec2 position, float a, float b, float angle = 0.0)
 	float cx = position.x + a / 2;
 	float cy = position.y - b / 2;
 
-
 	Shape rect = Shape(yellow, 4, vertices);
 	return RotateShape(rect, position, angle);
 }
@@ -120,7 +119,6 @@ Shape CreatePentagon(vec2 position, float smallRadius,
 }
 
 
-
 Shape CreateEllipse(vec2 position, vec4 color, float a, float b, float startAngle, 
 		float endAngle, float rotationAngle = 0)
 {
@@ -130,17 +128,32 @@ Shape CreateEllipse(vec2 position, vec4 color, float a, float b, float startAngl
 	float step = radians((endAngle - startAngle) / 20.0);
 
 	float currentAngle = radians(startAngle);
-	for(int i = 0; i < 20; i++)
+
+	for (int i = 0; i < 20; i++)
 	{
+		float x = a * cos(currentAngle);
+		float y = b * sin(currentAngle);
+
 		vertices[i] = vec2(
-			cos(currentAngle) * a + position.x,
-			sin(currentAngle) * b + position.y);
+			(x * cos(rotationAngle) - y * sin(rotationAngle)) + position.x,
+			(x * sin(rotationAngle) + y * cos(rotationAngle)) + position.y
+		);
 
 		currentAngle += step;
 	}
 
+	//for(int i = 0; i < 20; i++)
+	//{
+	//	vertices[i] = vec2(
+	//		cos(currentAngle) * a + position.x,
+	//		sin(currentAngle) * b + position.y);
+	//
+	//	currentAngle += step;
+	//}
+
 	Shape ellipse = Shape(color, 20, vertices);
-	return RotateShape(ellipse, position, rotationAngle);
+	//return RotateShape(ellipse, position, rotationAngle);
+	return ellipse;
 }
 
 void DrawShape(Shape shape)
@@ -157,6 +170,15 @@ void main()
 	// main color
 	gl_FragColor = red;
 
+	// sickle
+	Shape yellowEllipse = CreateEllipse(vec2(0.17,0.66), yellow, 0.15, 0.2, 0, 360, 45);
+	Shape redEllipse = CreateEllipse(vec2(0.12,0.68), red, 0.165, 0.22, 0, 360, 45);
+	Shape handle = CreateRectangle(vec2(0.12,0.46), 0.15, 0.065, 40);
+
+	DrawShape(yellowEllipse);
+	DrawShape(redEllipse);
+	DrawShape(handle);
+
 	// star
 	Shape yellowPentagon = CreatePentagon(vec2(0.25,0.85), 0.05, 0.1, yellow);
 	Shape redPentagon = CreatePentagon(vec2(0.25,0.85), 0.033, 0.066, red);
@@ -164,24 +186,11 @@ void main()
 	DrawShape(yellowPentagon);
 	DrawShape(redPentagon);
 
-	// ellipse
-	Shape yellowEllipse = CreateEllipse(vec2(0.5,0.5), yellow, 0.2, 0.2, 0, 360, 15);
-	Shape redEllipse = CreateEllipse(vec2(0.45,0.48), red, 0.15, 0.18, 0, 360, -25);
-
-
-	DrawShape(yellowEllipse);
-	//DrawShape(redEllipse);
-
 	// hammer
 	Shape rect = CreateRectangle(vec2(0.16, 0.69), 0.35, 0.05, -45);
 	Shape trap = CreateRegularTrapeze(vec2(0.07, 0.65), 0.1, 0.15, 0.2, 40);
 
 	DrawShape(rect);
 	DrawShape(trap);
-
-	
-	
-
-
 
 }

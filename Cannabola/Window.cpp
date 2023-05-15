@@ -5,18 +5,6 @@ void Window::OnResizeFunction(GLFWwindow* window, int width, int height)
 	const float aspectRatio = (float)width / (float)height;
 	float scale = 3;
 
-
-	//glViewport(0, 0, width, height);
-	//glMatrixMode(GL_PROJECTION);
-	//glLoadIdentity();
-
-	//// умножает текущую матрицу на матрицу перспективы.
-	//glFrustum(-aspectRatio * scale, aspectRatio * scale, -scale, scale, scale, 0);
-
-	//glMatrixMode(GL_MODELVIEW);
-	//glLoadIdentity();
-
-
 	glViewport(0, 0, width, height);
 
 	glMatrixMode(GL_PROJECTION);
@@ -55,6 +43,7 @@ Window::Window(int width, int height, const char* title,
 		throw "Window not created";
 	}
 	glfwMakeContextCurrent(_window);
+
 	glewInit();
 
 	glfwSetWindowSizeCallback(_window, OnResizeFunction);
@@ -80,7 +69,6 @@ void Window::Run() const
 		glfwSwapBuffers(_window);
 		glfwWaitEvents();
 	}
-
 	glfwTerminate();
 }
 

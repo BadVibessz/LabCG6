@@ -32,7 +32,5 @@ public:
 
 	void Start() const;
 	void Stop() const;
-
-
 };
 
