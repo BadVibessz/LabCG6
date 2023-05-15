@@ -1,0 +1,19 @@
+float CalculateRadius()
+{
+	return (1 + sin(gl_Vertex.x)) * (1 + 0.9 * cos(8 * gl_Vertex.x))
+		* (1 + 0.1 * cos(24 * gl_Vertex.x)) * (0.5 + 0.05 * cos(140 * gl_Vertex.x));
+}
+
+void main()
+{
+	gl_FrontColor = gl_Color;
+
+	vec4 position = gl_Vertex;
+
+	float radius = CalculateRadius();
+
+	position.x = radius * cos(gl_Vertex.x);
+	position.y = radius * sin(gl_Vertex.x);
+
+	gl_Position = gl_ModelViewProjectionMatrix * position;
+}
