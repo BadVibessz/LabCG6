@@ -49,6 +49,9 @@ Shape RotateShape(Shape shape, vec2 origin, float angle)
 		vertices[i].x -= origin.x;
 		vertices[i].y -= origin.y;
 
+		//float x = vertices[i].x;
+		//float y = vertices[i].y;
+
 		vertices[i].x = cos(rad) * vertices[i].x - sin(rad) * vertices[i].y;
 		vertices[i].y = sin(rad) * vertices[i].x + cos(rad) * vertices[i].y;
 
@@ -69,9 +72,6 @@ Shape CreateRectangle(vec2 position, float a, float b, float angle = 0.0)
 	vertices[1] = position;
 	vertices[2] = vec2(position.x + a, position.y);
 	vertices[3] = vec2(position.x + a, position.y - b);
-
-	float cx = position.x + a / 2;
-	float cy = position.y - b / 2;
 
 	Shape rect = Shape(yellow, 4, vertices);
 	return RotateShape(rect, position, angle);
@@ -111,7 +111,6 @@ Shape CreatePentagon(vec2 position, float smallRadius,
 			sin(angle + radians(36)) * smallRadius.x + position.y);
 
 		angle += radians(72);
-
 	}
 
 	Shape pent = Shape(color, 10, vertices);
@@ -122,7 +121,6 @@ Shape CreatePentagon(vec2 position, float smallRadius,
 Shape CreateEllipse(vec2 position, vec4 color, float a, float b, float startAngle, 
 		float endAngle, float rotationAngle = 0)
 {
-	
 	vec2 vertices[20];
 
 	float step = radians((endAngle - startAngle) / 20.0);
@@ -142,17 +140,7 @@ Shape CreateEllipse(vec2 position, vec4 color, float a, float b, float startAngl
 		currentAngle += step;
 	}
 
-	//for(int i = 0; i < 20; i++)
-	//{
-	//	vertices[i] = vec2(
-	//		cos(currentAngle) * a + position.x,
-	//		sin(currentAngle) * b + position.y);
-	//
-	//	currentAngle += step;
-	//}
-
 	Shape ellipse = Shape(color, 20, vertices);
-	//return RotateShape(ellipse, position, rotationAngle);
 	return ellipse;
 }
 
@@ -192,5 +180,4 @@ void main()
 
 	DrawShape(rect);
 	DrawShape(trap);
-
 }
