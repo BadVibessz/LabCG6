@@ -1,0 +1,11 @@
+#version 120
+
+varying out mat4 modelViewMatrix;
+varying out mat4 projectionMatrix;
+
+void main()
+{
+	gl_Position = gl_Vertex;
+	modelViewMatrix = gl_ModelViewMatrix;
+	projectionMatrix = gl_ProjectionMatrix;
+}

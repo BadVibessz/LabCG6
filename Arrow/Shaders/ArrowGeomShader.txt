@@ -1,0 +1,56 @@
+#version 150
+
+layout (lines) in;
+layout (line_strip) out;
+layout (max_vertices = 5) out;
+
+in mat4 modelViewMatrix[];
+in mat4 projectionMatrix[];
+
+float lenght = distance(gl_in[0].gl_Position, gl_in[1].gl_Position);
+float offset = lenght / 8;
+
+
+vec2 xAxis = vec2(1, 0);
+vec2 arrowBase = gl_in[1].gl_Position.xy - gl_in[0].gl_Position.xy; 
+
+float angleBetweenX = acos(dot(xAxis, arrowBase)) * 
+            sign(gl_in[1].gl_Position.y - gl_in[0].gl_Position.y);
+
+void ftransform()
+{
+    gl_Position *= projectionMatrix[0] * modelViewMatrix[0];
+}
+
+vec2 GetPoint(float angle)
+{
+    return vec2(offset * cos(angle), offset * sin(angle));
+}
+
+void main() 
+{
+    vec2 topPoint = GetPoint(angleBetweenX + radians(165.f));
+    vec2 bottomPoint = GetPoint(angleBetweenX + radians(195.f));
+
+    gl_Position = gl_in[0].gl_Position; 
+    ftransform();
+    EmitVertex();
+
+    gl_Position = gl_in[1].gl_Position; 
+    ftransform();
+    EmitVertex();
+
+    gl_Position = gl_in[1].gl_Position + vec4(bottomPoint.xy, 0, 0); 
+    ftransform();
+    EmitVertex();
+
+    gl_Position = gl_in[1].gl_Position; 
+    ftransform();
+    EmitVertex();
+
+    gl_Position = gl_in[1].gl_Position + vec4(topPoint.xy, 0, 0); 
+    ftransform();
+    EmitVertex();
+
+    EndPrimitive();
+} 

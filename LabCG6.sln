@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cannabola", "Cannabola\Cann
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "USSR", "USSR\USSR.vcxproj", "{480DE640-F996-4CE2-AFCF-0338CC87E72E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Arrow", "Arrow\Arrow.vcxproj", "{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{480DE640-F996-4CE2-AFCF-0338CC87E72E}.Release|x64.Build.0 = Release|x64
 		{480DE640-F996-4CE2-AFCF-0338CC87E72E}.Release|x86.ActiveCfg = Release|Win32
 		{480DE640-F996-4CE2-AFCF-0338CC87E72E}.Release|x86.Build.0 = Release|Win32
+		{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}.Debug|x64.ActiveCfg = Debug|x64
+		{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}.Debug|x64.Build.0 = Debug|x64
+		{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}.Debug|x86.ActiveCfg = Debug|Win32
+		{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}.Debug|x86.Build.0 = Debug|Win32
+		{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}.Release|x64.ActiveCfg = Release|x64
+		{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}.Release|x64.Build.0 = Release|x64
+		{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}.Release|x86.ActiveCfg = Release|Win32
+		{FED7EF7A-632E-46B7-80C1-1BEF9385F1BD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
