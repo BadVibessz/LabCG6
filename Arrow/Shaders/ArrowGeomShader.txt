@@ -10,7 +10,6 @@ in mat4 projectionMatrix[];
 float lenght = distance(gl_in[0].gl_Position, gl_in[1].gl_Position);
 float offset = lenght / 8;
 
-
 vec2 xAxis = vec2(1, 0);
 vec2 arrowBase = gl_in[1].gl_Position.xy - gl_in[0].gl_Position.xy; 
 

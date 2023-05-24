@@ -12,27 +12,10 @@
 
 using uint = unsigned int;
 
-class Shader
+static class Shader
 {
-
-private:
-	uint _shaderType;
-	char const *_shaderSource;
-
-	uint _shader;
-	uint _program;
-
 public:
-
-	Shader() = default;
-	Shader(uint shaderType, char const *shaderSource);
-	void Compile() const;
-	void Link() const;
-	~Shader();
-
-	void Start() const;
-	void Stop() const;
-
-
+	static uint CreateShader(uint shaderType, char const* shaderSource);
+	static void Compile(uint shader);
 };
 

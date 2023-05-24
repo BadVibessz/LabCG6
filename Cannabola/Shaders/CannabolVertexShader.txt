@@ -1,7 +1,9 @@
 float CalculateRadius()
 {
-	return (1 + sin(gl_Vertex.x)) * (1 + 0.9 * cos(8 * gl_Vertex.x))
-		* (1 + 0.1 * cos(24 * gl_Vertex.x)) * (0.5 + 0.05 * cos(140 * gl_Vertex.x));
+	//return (1 + sin(gl_Vertex.x)) * (1 + 0.9 * cos(8 * gl_Vertex.x))
+		//* (1 + 0.1 * cos(24 * gl_Vertex.x)) * (0.5 + 0.05 * cos(140 * gl_Vertex.x));
+
+	return 3 * sin(16 * gl_Vertex.x);
 }
 
 void main()

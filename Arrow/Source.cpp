@@ -13,8 +13,6 @@ void onDisplayFunction()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glPushMatrix();
-
 	glLineWidth(2);
 	glBegin(GL_LINES);
 
@@ -28,9 +26,7 @@ void onDisplayFunction()
 
 		angle += 45;
 	}
-
 	glEnd();
-	glPopMatrix();
 }
 
 int main()
