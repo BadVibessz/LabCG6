@@ -18,14 +18,21 @@ void onDisplayFunction()
 
 	glColor3f(0, 0, 0);
 
-	float angle = 0;
+	/*float angle = 0;
 	for (int i = 0; i < 8; i++)
 	{
 		glVertex3f(0, 0, 0);
 		glVertex3f(cos(angle * PI / 180), sin(angle * PI / 180), 0);
 
 		angle += 45;
-	}
+	}*/
+
+	//glVertex3f(0, 0, 0);
+	//glVertex3f(cos(60 * PI / 180), sin(60 * PI / 180), 0);
+
+	glVertex3f(0, -1, 0);
+	glVertex3f(cos(60 * PI / 180), sin(60 * PI / 180), 0);
+
 	glEnd();
 }
 
