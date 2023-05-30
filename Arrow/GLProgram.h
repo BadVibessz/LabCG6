@@ -18,14 +18,10 @@ public:
 	uint program;
 	std::vector<uint> shaders = std::vector<uint>();
 
-
 	GLProgram();
 	void Link();
 	void AttachShader(uint shader);
 	void Start();
 	void Stop();
-
-	
-
 };
 
